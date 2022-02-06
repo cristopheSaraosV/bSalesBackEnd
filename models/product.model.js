@@ -10,7 +10,7 @@ const Product = function(product) {
 };
 
 
-Product.getAll = (title, result) => {
+Product.allTheProducts = (title, result) => {
   let query = "SELECT * FROM product";
   if (title) {
     query += ` WHERE title LIKE '%${title}%'`;

@@ -2,7 +2,7 @@ const Product = require("../models/product.model");
 
 const allTheProducts = (req = request, res = response) => {
     const title = req.query.title;
-    Product.getAll(title, (err, data) => {
+    Product.allTheProducts(title, (err, data) => {
     if (err)
       res.status(500).send({
         message:
