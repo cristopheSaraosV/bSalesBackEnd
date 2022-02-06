@@ -1,0 +1,27 @@
+{
+  "name": "Section-7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.9",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.41"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.14"
+  }
+}
