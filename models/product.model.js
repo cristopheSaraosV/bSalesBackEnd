@@ -11,7 +11,7 @@ const Product = function(product) {
 
 
 Product.allTheProducts = (title, result) => {
-  let query = "SELECT * FROM product";
+  let query = "SELECT product.id, product.name,product.url_image, product.price,product.discount, category.name AS 'Category' FROM product JOIN category  ON product.category=category.id";
   if (title) {
     query += ` WHERE title LIKE '%${title}%'`;
   }
@@ -22,7 +22,7 @@ Product.allTheProducts = (title, result) => {
       return;
     }
     console.log("tutorials: ", res);
-    result(null, res);
+    result(null,  res);
   });
 };
 
