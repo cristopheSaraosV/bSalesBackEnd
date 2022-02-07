@@ -21,7 +21,6 @@ Product.allTheProducts = (title, result) => {
       result(null, err);
       return;
     }
-    console.log("tutorials: ", res);
     result(null,  res);
   });
 };
@@ -39,7 +38,6 @@ Product.searchProducts = (title,result) => {
           return;
         }
         if (res.length) {
-          console.log("found tutorial: ", res);
           result(null, res);
           return;
         }
