@@ -6,7 +6,7 @@ const allTheProducts = (req = request, res = response) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving products."
       });
     else res.json({products:products.sort(SortArray)});
   });
@@ -21,9 +21,34 @@ const searchProducts = (req = request, res = response) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving products."
       });
     else res.json({products:products.sort(SortArray)});
+  });
+
+};
+const theFirstFourProducts = (req = request, res = response) => {
+    const title = req.query.product;
+    Product.theFirstFourProducts(title, (err, products) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving products."
+      });
+    else res.json({products});
+  });
+
+};
+
+const searchProductsForCategory = (req = request, res = response) => {
+    const title = req.query.category;
+    Product.searchProductsForCategory(title, (err, products) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving products."
+      });
+    else res.json({products});
   });
 
 };
@@ -36,5 +61,7 @@ const  SortArray = (x, y) =>{
 
 module.exports = {
 	allTheProducts,
-    searchProducts
+    searchProducts,
+    theFirstFourProducts,
+    searchProductsForCategory
 };

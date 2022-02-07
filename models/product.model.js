@@ -25,6 +25,44 @@ Product.allTheProducts = (title, result) => {
   });
 };
 
+Product.theFirstFourProducts = (title, result) => {
+  let query = "SELECT product.id, product.name,product.url_image, product.price,product.discount, category.name AS 'Category' FROM product JOIN category  ON product.category=category.id LIMIT 4";
+  if (title) {
+    query += ` WHERE title LIKE '%${title}%'`;
+  }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    result(null,  res);
+  });
+};
+
+
+
+Product.searchProductsForCategory = (title,result) => {
+    sql.query(`SELECT product.id, product.name, 
+    product.url_image, product.price,product.discount,
+    category.name AS 'Category' FROM product 
+    JOIN category  ON product.category=category.id
+    WHERE category.id LIKE '%${title}%'
+    `, (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          result(err, null);
+          return;
+        }
+        if (res.length) {
+          result(null, res);
+          return;
+        }
+        // not found Tutorial with the id
+        result({ kind: "not_found" }, null);
+      });
+};
+
 Product.searchProducts = (title,result) => {
     sql.query(`SELECT product.id, product.name, 
     product.url_image, product.price,product.discount,
@@ -45,5 +83,7 @@ Product.searchProducts = (title,result) => {
         result({ kind: "not_found" }, null);
       });
 }
+
+
 
 module.exports = Product;

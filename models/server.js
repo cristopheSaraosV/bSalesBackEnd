@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const routerProducts = require('../routes/product.routes');
-const mySql = require('mysql');
+const routerCategories = require('../routes/category.routes');
 const colors = require('colors');
 
 class Server {
@@ -11,6 +11,7 @@ class Server {
 
 		// Path
 		this.productsPath = '/api/products';
+		this.categoryPath = '/api/categories';
 		// Middleware
 		this.middlewares();
 		// Routes
@@ -27,6 +28,7 @@ class Server {
 	// Routes
 	routes() {
 		this.app.use(this.productsPath, routerProducts);
+		this.app.use(this.categoryPath, routerCategories);
 	}
     
     
