@@ -1,6 +1,13 @@
+require('dotenv').config();
+
+const HOST = process.env.HOST
+const USER = process.env.USER
+const PASSWORD = process.env.PASSWORD
+const DATABASE = process.env.DATABASE
+
 module.exports = {
-    host:'mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com',
-    user:'bsale_test',
-    password:'bsale_test',
-    database:'bsale_test'
+    user     :USER     ,
+    host     :HOST     ,
+    password :PASSWORD ,
+    database :DATABASE 
 }
